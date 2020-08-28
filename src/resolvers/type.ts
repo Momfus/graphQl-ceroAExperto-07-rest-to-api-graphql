@@ -9,6 +9,22 @@ const type: IResolvers = {
         year: parent => parent.season,
         urlMobile: parent => getWikipediaMobileUrl( parent.url )
 
+    },
+    Race: { // Resolver al obtener algun dato nulo (como pasa en el name)
+    
+        name: parent => parent.raceName,
+        circuit: parent => parent.Circuit
+
+    },
+    Circuit: { // Resolver al obtener algun dato nulo
+
+        id: parent => parent.circuitId,
+        name: parent => parent.circuitName,
+        location: parent => parent.Location,
+
+    },
+    Location:  {
+        lng: parent => parent.long
     }
 
 };
