@@ -1,5 +1,6 @@
 
 import { F1 } from './data-source';
+import { checkYear } from '../lib/utils';
 
 
 export class RacesData extends F1 {
@@ -11,14 +12,9 @@ export class RacesData extends F1 {
     }
 
     
-    async getYear( year: String ) {
-        
-        const currentYear = new Date().getFullYear(); // Año actual
-        
-        if( isNaN(+year) || +year < 1950 || +year > currentYear ) { // Comprobar si no es numero, menor a 1950 o mayor al año actual para manejar el error
-            year = String(currentYear); // Coloca el año actual en caso de erroy  convierte a string el mismo
-        }
+    async getYear( year: string ) {
 
+        year = checkYear(year);
         return await this.get(`${ year }.json`, {
             cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
         });
