@@ -20,6 +20,14 @@ const query: IResolvers = {
                 (data: any) => data.MRData.RaceTable.Races // Traido de la api
             );
 
+        },
+
+        async raceSelect( _: void, { year, round }, { dataSources } ) {
+
+            return await dataSources.races.getYearRound( year, round ).then(
+                (data: any) => data.MRData.RaceTable.Races[0] // Traido de la api
+            );
+
         }
 
     }

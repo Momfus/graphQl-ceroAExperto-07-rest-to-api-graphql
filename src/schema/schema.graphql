@@ -1,6 +1,7 @@
 type Query {
     seasonsList: [ Season! ]!
     racesByYear( year: String! ): [Race!]! # Recibe un año y devuelve una lista de carreras (de ese año)
+    raceSelect( year: String!, round: Int! ): Race
 }
 
 type Mutation {
