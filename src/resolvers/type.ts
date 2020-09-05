@@ -13,7 +13,8 @@ const type: IResolvers = {
     Race: { // Resolver al obtener algun dato nulo (como pasa en el name)
     
         name: parent => parent.raceName,
-        circuit: parent => parent.Circuit
+        circuit: parent => parent.Circuit,
+        urlMobile: parent => getWikipediaMobileUrl( parent.url )
 
     },
     Circuit: { // Resolver al obtener algun dato nulo
@@ -21,6 +22,7 @@ const type: IResolvers = {
         id: parent => parent.circuitId,
         name: parent => parent.circuitName,
         location: parent => parent.Location,
+        urlMobile: parent => getWikipediaMobileUrl( parent.url )
 
     },
     Location:  {
