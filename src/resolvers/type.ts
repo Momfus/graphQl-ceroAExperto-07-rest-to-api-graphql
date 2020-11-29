@@ -33,6 +33,14 @@ const type: IResolvers = {
         name: parent => parent.givenName.concat(' ').concat(parent.familyName), // Se el nombre completo con los atributos concatenados de la api
         urlMobile: parent => getWikipediaMobileUrl( parent.url )
     },
+    DriverStanding: {
+        driver: parent => parent.Driver,
+        constructors: parent => parent.Constructors
+    },
+    Constructor: {
+        id: parent => parent.constructorId,
+        urlMobile: parent => getWikipediaMobileUrl( parent.url )
+    }
 
 };
 

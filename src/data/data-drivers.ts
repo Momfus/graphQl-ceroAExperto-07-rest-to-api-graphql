@@ -60,5 +60,15 @@ export class DriversData extends F1 {
 
     }
 
+    // Obtener temporadas por rankings de pilotos
+    async getSeasonsPilotsRanking(year: string) {
+        year = checkYear(year);
+        return await this.get(String(year).concat('/driverStandings.json'),
+            {
+                cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
+            }
+        );
+    }
+
 
 }
