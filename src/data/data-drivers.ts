@@ -1,4 +1,5 @@
 import { F1 } from './data-source';
+import { checkYear } from '../lib/utils';
 
 
 export class DriversData extends F1 {
@@ -25,6 +26,16 @@ export class DriversData extends F1 {
             cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
         });
 
+    }
+
+    // Obtener los conductores por año
+    async getDriversByYear( year: string ) {
+        year = checkYear(year);
+        return await this.get(String(year).concat('/drivers.json'),
+            {
+                cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
+            }
+        );
     }
 
 

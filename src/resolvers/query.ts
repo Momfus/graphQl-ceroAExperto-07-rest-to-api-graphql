@@ -1,4 +1,5 @@
 import { IResolvers } from 'graphql-tools';
+import { dataSources } from '../data/index';
 
 const query: IResolvers = {
     Query: {
@@ -35,6 +36,12 @@ const query: IResolvers = {
                 (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
             );
 
+        },
+
+        async driversYear(_: void, { year }, { dataSources } ) {
+            return await dataSources.drivers.getDriversByYear(year).then(
+                (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
+            );
         }
 
     }
