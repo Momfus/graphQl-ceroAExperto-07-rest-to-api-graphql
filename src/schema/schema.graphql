@@ -35,6 +35,9 @@ type Query {
 
     "Pilotos históricos"
     historyCircuits( pageElements: Int, page: Int ): [Circuit!]!
+
+    "Circuito Seleccionado"
+    circuitSelect(id: String!): Circuit
 }
 
 type Mutation {

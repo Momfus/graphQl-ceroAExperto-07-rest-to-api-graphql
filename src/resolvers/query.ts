@@ -68,6 +68,12 @@ const query: IResolvers = {
             return await dataSources.circuits.getCircuits(pageElements, page).then(
                 (data: any) => data.MRData.CircuitTable.Circuits
             )
+        },
+
+        async circuitSelect( _: void, {id}, {dataSources}) {
+            return await dataSources.circuits.getCircuit(id).then(
+                (data: any) => data.MRData.CircuitTable.Circuits[0] // siempre trae el resultado de una lista, al ser unico, obtenemos el primero
+            )
         }
 
     }

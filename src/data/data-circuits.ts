@@ -10,7 +10,7 @@ export class CircuitData extends F1 {
     }
 
     async getCircuits( pageElements: number = -1, page: number = 1 ) {
-        
+
         if( pageElements === -1 ) {
             return await this.get('circuits.json?limit=1000', {
                 cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
@@ -22,6 +22,14 @@ export class CircuitData extends F1 {
             cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
         });
 
+    }
+
+    async getCircuit( id: string ) {
+        return await this.get(`circuits/${id}.json`,
+            {
+                cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
+            }
+        );
     }
 
 }
