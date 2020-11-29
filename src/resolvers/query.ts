@@ -50,6 +50,12 @@ const query: IResolvers = {
                 (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
             )
 
+        },
+
+        async driverSelect(_: void, {id}, {dataSources}) {
+            return await dataSources.drivers.getDriver(id).then(
+                (data: any) => data.MRData.DriverTable.Drivers[0] // siempre trae el resultado de una lista, al ser unico, obtenemos el primero
+            )
         }
 
     }

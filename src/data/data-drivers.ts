@@ -49,5 +49,16 @@ export class DriversData extends F1 {
         );
     }
 
+    // Obtener un piloto en especifico por id
+    async getDriver( id: string ) {
+
+        return await this.get(`/drivers/${id}.json`,
+            {
+                cacheOptions: { ttl: 60} // Se mantiene la respuesta en cache por 60 minutos
+            }
+        );
+
+    }
+
 
 }
