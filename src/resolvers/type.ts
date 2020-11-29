@@ -27,7 +27,12 @@ const type: IResolvers = {
     },
     Location:  {
         lng: parent => parent.long
-    }
+    },
+    Driver: {
+        id: parent => parent.driverId,
+        name: parent => parent.givenName.concat(' ').concat(parent.familyName), // Se el nombre completo con los atributos concatenados de la api
+        urlMobile: parent => getWikipediaMobileUrl( parent.url )
+    },
 
 };
 

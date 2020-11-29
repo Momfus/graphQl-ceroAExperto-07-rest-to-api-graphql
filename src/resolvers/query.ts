@@ -28,6 +28,14 @@ const query: IResolvers = {
                 (data: any) => data.MRData.RaceTable.Races[0] // Traido de la api
             );
 
+        },
+
+        async historyDrivers( _: void, __: any, { dataSources } ) {
+
+            return await dataSources.drivers.getDrivers().then(
+                (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
+            );
+
         }
 
     }
