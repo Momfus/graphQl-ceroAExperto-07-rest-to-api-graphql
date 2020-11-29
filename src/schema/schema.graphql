@@ -32,6 +32,9 @@ type Query {
 
     "Clasificación final de los pilotos de una temporada"
     seasonPilotRanking(year: String!): [DriverStanding!]!
+
+    "Pilotos históricos"
+    historyCircuits( pageElements: Int, page: Int ): [Circuit!]!
 }
 
 type Mutation {

@@ -29,3 +29,9 @@ export function roundCheck( round:number ) {
     return round;
 
 }
+
+export function paginationOptions( pageElements: number, page: number) {
+    const offset = (page - 1) * pageElements; // Obtener la cantidad de elementos segun la pagina y cantidad de elementos
+    const limit = pageElements;
+    return `limit=${limit}&offset=${offset}`;
+}
