@@ -1,5 +1,4 @@
 import { IResolvers } from 'graphql-tools';
-import { dataSources } from '../data/index';
 
 const query: IResolvers = {
     Query: {
@@ -30,9 +29,9 @@ const query: IResolvers = {
 
         },
 
-        async historyDrivers( _: void, __: any, { dataSources } ) {
+        async historyDrivers( _: void, {pageElement, page}: any, { dataSources } ) {
 
-            return await dataSources.drivers.getDrivers().then(
+            return await dataSources.drivers.getDrivers(pageElement, page).then(
                 (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
             );
 
