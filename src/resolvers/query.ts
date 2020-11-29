@@ -42,6 +42,14 @@ const query: IResolvers = {
             return await dataSources.drivers.getDriversByYear(year).then(
                 (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
             );
+        },
+
+        async driversYearAndRound(_: void, { year, round }, {dataSources}) {
+
+            return await dataSources.drivers.getDriversByYearAndRound(year, round).then(
+                (data: any) => data.MRData.DriverTable.Drivers // Traido de la api
+            )
+
         }
 
     }
